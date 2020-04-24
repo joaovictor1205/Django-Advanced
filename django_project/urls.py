@@ -17,9 +17,10 @@ from django.contrib import admin
 from django.urls import path
 
 from django.views.generic.base import TemplateView
-from core.views import HomePageView
+from core.views import HomePageView, View
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('home/', HomePageView.as_view(template_name="home.html"), name="home"),
+    path('view/', View.as_view(), name="view")
 ]
