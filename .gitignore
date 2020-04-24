@@ -1,0 +1,30 @@
+#### VIRTUAL ENV ####
+venv/
+#####################
+
+### BANCO DE DADOS ###
+db.sqlite3
+#####################
+
+*.log
+
+*.pot
+
+*.pyc
+
+__pycache__
+
+media
+
+*.py[cod]
+
+*$py.class
+
+###### VS CODE ########
+.vscode/* 
+!.vscode/settings.json 
+!.vscode/tasks.json 
+!.vscode/launch.json 
+!.vscode/extensions.json 
+.history
+######################
