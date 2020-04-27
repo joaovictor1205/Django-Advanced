@@ -3,6 +3,6 @@ Listagem de Pessoas:
 <br> <br>
 {% for person in object_list %}
 
-    {{ person }} <br> <br>
+    <a href="{% url 'detalhe' person.id %}"> {{ person }} </a> <br> <br>
 
 {% endfor %}
