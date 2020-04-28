@@ -2,12 +2,13 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Person
 from django.utils import timezone
+from django.urls import reverse_lazy
 
 from django.views import View
 from django.views.generic.base import TemplateView
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView
 
 class HomePageView(TemplateView):
 
@@ -44,4 +45,9 @@ class PersonDetail(DetailView):
 class PersonCreate(CreateView):
     model = Person
     fields = ['first_name', 'last_name']
-    success_url = '/lista'
+    success_url = reverse_lazy('lista')
+
+class PersonUpdate(UpdateView):
+    model = Person
+    fields = ['first_name', 'last_name']
+    success_url = reverse_lazy('lista')
