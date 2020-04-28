@@ -7,6 +7,7 @@ from django.views import View
 from django.views.generic.base import TemplateView
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
+from django.views.generic.edit import CreateView
 
 class HomePageView(TemplateView):
 
@@ -39,3 +40,8 @@ class PersonDetail(DetailView):
         context = super().get_context_data(**kwargs)
         context['data'] = timezone.now()
         return context
+
+class PersonCreate(CreateView):
+    model = Person
+    fields = ['first_name', 'last_name']
+    success_url = '/lista'

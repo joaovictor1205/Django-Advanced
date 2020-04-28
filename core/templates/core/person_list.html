@@ -6,3 +6,5 @@ Listagem de Pessoas:
     <a href="{% url 'detalhe' person.id %}"> {{ person }} </a> <br> <br>
 
 {% endfor %}
+
+<a href="{% url 'criar' %}"> <button type="button"> Novo Cliente </button> </a>
