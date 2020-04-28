@@ -8,7 +8,7 @@ from django.views import View
 from django.views.generic.base import TemplateView
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
-from django.views.generic.edit import CreateView, UpdateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 class HomePageView(TemplateView):
 
@@ -50,4 +50,8 @@ class PersonCreate(CreateView):
 class PersonUpdate(UpdateView):
     model = Person
     fields = ['first_name', 'last_name']
+    success_url = reverse_lazy('lista')
+
+class PersonDelete(DeleteView):
+    model = Person
     success_url = reverse_lazy('lista')

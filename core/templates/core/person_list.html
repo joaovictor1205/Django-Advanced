@@ -3,7 +3,7 @@ Listagem de Pessoas:
 <br> <br>
 {% for person in object_list %}
 
-    <a href="{% url 'detalhe' person.id %}"> {{ person }} </a> <br> <br>
+    <a href="{% url 'detalhe' person.id %}"> {{ person }}  <a href="{% url 'deletar' person.id %}"> <button>Excluir</button> </a> </a> <br> <br>
 
 {% endfor %}
 

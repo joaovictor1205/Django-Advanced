@@ -1,0 +1,9 @@
+<form action="" method="POST">
+
+    {% csrf_token %}
+
+    <h1>Confirmar exclusão de: {{ object }}?</h1>
+
+    <button type="submit"> Deletar </button>
+
+</form>
