@@ -45,13 +45,19 @@ class PersonDetail(DetailView):
 class PersonCreate(CreateView):
     model = Person
     fields = ['first_name', 'last_name']
-    success_url = reverse_lazy('lista')
+
+    def get_success_url(self):
+        return reverse_lazy('lista')
 
 class PersonUpdate(UpdateView):
     model = Person
     fields = ['first_name', 'last_name']
-    success_url = reverse_lazy('lista')
+
+    def get_success_url(self):
+        return reverse_lazy('lista')
 
 class PersonDelete(DeleteView):
     model = Person
-    success_url = reverse_lazy('lista')
+
+    def get_success_url(self):
+        return reverse_lazy('lista')
