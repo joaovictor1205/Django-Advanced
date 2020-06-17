@@ -10,6 +10,9 @@ from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
+from django.db.models import Max, Min
+from .models import *
+
 class HomePageView(TemplateView):
 
     template_name = 'home.html'
@@ -64,4 +67,16 @@ class PersonDelete(DeleteView):
 
 class Dashboard(View):
     def get(self, request):
-        return render(request, 'dashboard.html')
+
+        mais_pedido = Pedido.objects.all().aggregate(Max('quantidade'))['quantidade__max']
+        menos_pedido = Pedido.objects.all().aggregate(Min('quantidade'))['quantidade__min']
+
+        qtd_pedidos = Pedido.objects.all().count()
+
+        context = {
+            'mais_pedido': mais_pedido,
+            'menos_pedido': menos_pedido,
+            'qtd_pedidos': qtd_pedidos,
+        }
+
+        return render(request, 'dashboard.html', context)
