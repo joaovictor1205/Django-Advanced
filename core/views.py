@@ -61,3 +61,7 @@ class PersonDelete(DeleteView):
 
     def get_success_url(self):
         return reverse_lazy('lista')
+
+class Dashboard(View):
+    def get(self, request):
+        return render(request, 'dashboard.html')

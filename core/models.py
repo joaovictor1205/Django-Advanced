@@ -6,3 +6,16 @@ class Person(models.Model):
 
     def __str__(self):
         return self.first_name
+
+class Produto(models.Model):
+    nome = models.CharField('Nome', max_length=200)
+
+    def __str__(self):
+        return self.nome
+
+class Pedido(models.Model):
+    produto = models.ForeignKey(Produto, on_delete=models.CASCADE)
+    quantidade = models.IntegerField()
+
+    def __str__(self):
+        return f'{self.quantidade} - {self.produto}'
