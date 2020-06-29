@@ -71,12 +71,15 @@ class Dashboard(View):
         mais_pedido = Pedido.objects.all().aggregate(Max('quantidade'))['quantidade__max']
         menos_pedido = Pedido.objects.all().aggregate(Min('quantidade'))['quantidade__min']
 
+        alterar_estoque = request.user.has_perm('produto.change_estoque')
+
         qtd_pedidos = Pedido.objects.all().count()
 
         context = {
             'mais_pedido': mais_pedido,
             'menos_pedido': menos_pedido,
             'qtd_pedidos': qtd_pedidos,
+            'alterar_estoque': alterar_estoque,
         }
 
         return render(request, 'dashboard.html', context)

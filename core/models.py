@@ -9,6 +9,12 @@ class Person(models.Model):
 
 class Produto(models.Model):
     nome = models.CharField('Nome', max_length=200)
+    possui_estoque = models.BooleanField('Tem no estoque', default=False)
+
+    class Meta:
+        permissions = (
+            ('change_estoque', 'Alterar produto no estoque'),
+        )
 
     def __str__(self):
         return self.nome
