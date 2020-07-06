@@ -66,12 +66,18 @@ class PersonDelete(DeleteView):
         return reverse_lazy('lista')
 
 class Dashboard(View):
+
+    def dispatch(self, request, *args, **kwargs):
+        if not request.user.has_perm('core.ver_dashboard'):
+            return HttpResponse('Acesso Negado!')
+        return super(Dashboard, self).dispatch(request, *args, **kwargs)
+
     def get(self, request):
 
         mais_pedido = Pedido.objects.all().aggregate(Max('quantidade'))['quantidade__max']
         menos_pedido = Pedido.objects.all().aggregate(Min('quantidade'))['quantidade__min']
 
-        alterar_estoque = request.user.has_perm('produto.change_estoque')
+        alterar_estoque = request.user.has_perm('core.change_estoque')
 
         qtd_pedidos = Pedido.objects.all().count()
 

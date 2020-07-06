@@ -4,6 +4,11 @@ class Person(models.Model):
     first_name = models.CharField('Nome', max_length=100)
     last_name = models.CharField('Sobrenome', max_length=100)
 
+    class Meta:
+        permissions = (
+            ('ver_dashboard', 'Pode acessar tela Dashboard'),
+        )
+
     def __str__(self):
         return self.first_name
 
